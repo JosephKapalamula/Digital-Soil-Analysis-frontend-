@@ -28,17 +28,17 @@ export default function FieldLabAuth() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen rounded-l-xl shadow-sm border-l-4 ml-1 border-gray-400   bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-6 relative">
-      <div className="w-full max-w-md space-y-8">
+    <div className="min-h-screen rounded-l-xl shadow-sm border-l-4 ml-1 border-gray-400 bg-linear-to-br from-green-50 to-blue-50 flex items-center justify-center p-3 sm:p-4 md:p-6 relative">
+      <div className="w-full max-w-sm sm:max-w-md space-y-6 sm:space-y-8">
         {/* The Auth Card */}
-        <div className="bg-white border-l-4 border-gray-300 rounded-[3rem] p-12 shadow-2xl shadow-slate-200/60 space-y-8 animate-in slide-in-from-bottom-6 duration-700">
-          <div className="text-center space-y-3">
+        <div className="bg-white border-l-4 border-gray-300 ounded-4xl sm:rounded-[3rem] p-6 sm:p-8 md:p-12 shadow-2xl shadow-slate-200/60 space-y-6 sm:space-y-8 animate-in slide-in-from-bottom-6 duration-700">
+          <div className="text-center space-y-2 sm:space-y-3">
             <div className="">
-              <h1 className="text-2xl font-black text-center text-green-600 tracking-normal leading">
+              <h1 className="text-xl sm:text-2xl font-black text-center text-green-600 tracking-normal leading">
                 Field Lab
               </h1>
             </div>
-            <h2 className="text-2xl font-black text-left text-slate-600 tracking-tighter leading">
+            <h2 className="text-xl sm:text-2xl font-black text-left text-slate-600 tracking-tighter leading">
               {isLogin ? "Sign In " : "Create Account"}
             </h2>
           </div>
@@ -65,60 +65,55 @@ export default function FieldLabAuth() {
           >
             {!isLogin && (
               <div className="relative">
-                <User
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-400"
-                  size={18}
-                />
+                <User className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-blue-400 w-4 h-4 sm:w-4.5 sm:h-4.5" />
                 <input
                   type="text"
                   placeholder="Full Name"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full pl-12 pr-6 py-4 border-gray-300 rounded-2xl  border-b focus:bg-white focus:border-[#00D261] focus:ring-0 font-bold transition-all outline-none  focus:border-b-line"
+                  className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 border-gray-300 rounded-2xl border-b focus:bg-white focus:border-[#00D261] focus:ring-0 font-bold transition-all outline-none focus:border-b-line text-sm sm:text-base"
                   required
                 />
               </div>
             )}
 
             <div className="relative">
-              <Mail
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-400"
-                size={18}
-              />
+              <Mail className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-blue-400 w-4 h-4 sm:w-4.5 sm:h-4.5" />
               <input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-12 pr-6 py-4 text-slate-600 border-gray-300 rounded-2xl border-b-2 focus:bg-white focus:border-[#00D261] focus:ring-0 font-bold transition-all outline-none focus:border-b-line"
+                className="w-full pl-10 sm:pl-12 pr-4 sm:pr-6 py-3 sm:py-4 text-slate-600 border-gray-300 rounded-2xl border-b-2 focus:bg-white focus:border-[#00D261] focus:ring-0 font-bold transition-all outline-none focus:border-b-line text-sm sm:text-base"
                 required
               />
             </div>
 
             <div className="relative">
-              <LockKeyhole
-                className="absolute left-4 top-1/2 -translate-y-1/2  text-blue-400"
-                size={18}
-              />
+              <LockKeyhole className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-blue-400 w-4 h-4 sm:w-4.5 sm:h-4.5" />
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-12 py-4 text-slate-600 border-gray-300 rounded-2xl border-b-2 focus:bg-white focus:border-[#00D261] focus:ring-0 font-bold transition-all outline-none focus:border-b-line"
+                className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 text-slate-600 border-gray-300 rounded-2xl border-b-2 focus:bg-white focus:border-[#00D261] focus:ring-0 font-bold transition-all outline-none focus:border-b-line text-sm sm:text-base"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-slate-800 transition-colors"
+                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-slate-800 transition-colors"
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {showPassword ? (
+                  <EyeOff className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+                ) : (
+                  <Eye className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+                )}
               </button>
             </div>
             {/* ACTION AREA - Prompts on Left, Button on Right */}
-            <div className="flex items-center justify-between gap-4 pt-4">
-              <p className="text-slate-500 font-bold text-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pt-4">
+              <p className="text-slate-500 font-bold text-xs sm:text-sm text-center sm:text-left">
                 {isLogin ? "No account?" : "Have account?"}{" "}
                 <button
                   type="button"
@@ -132,18 +127,20 @@ export default function FieldLabAuth() {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-[#00D261] hover:bg-[#00b854] disabled:bg-gray-400 text-white px-6 py-3 rounded-full font-black text-lg shadow-lg shadow-[#00D261]/20 transition-all active:scale-95 flex items-center justify-center gap-2"
+                className="bg-[#00D261] hover:bg-[#00b854] disabled:bg-gray-400 text-white px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 rounded-full font-black text-sm sm:text-lg shadow-lg shadow-[#00D261]/20 transition-all active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 {loading ? "Loading..." : isLogin ? "Login" : "Register"}
-                {!loading && <ArrowRight size={18} />}
+                {!loading && (
+                  <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+                )}
               </button>
             </div>
           </form>
 
           <p className="text-red-500 text-center">{error}</p>
 
-          <div className="flex items-center gap-2 justify-center text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] pt-6">
-            <Globe size={14} className="animate-pulse text-blue-500" />{" "}
+          <div className="flex items-center gap-2 justify-center text-[8px] sm:text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] pt-4 sm:pt-6">
+            <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 animate-pulse text-blue-500" />{" "}
             Sentinel-V3 Security Protocol
           </div>
         </div>

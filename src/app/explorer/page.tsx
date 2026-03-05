@@ -39,124 +39,137 @@ export default function ExplorerPage() {
       />
 
       {/* 2. FLOATING TOP BAR (Search & Status) */}
-      <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-500 pointer-events-none">
-        <div className="bg-gray-50 backdrop-blur-md shadow-2xl border-l-4  border-green-500 p-2 rounded-2xl flex items-center gap-3 w-full max-w-md pointer-events-auto">
-          <div className="bg-green-500 p-2 rounded-xl">
-            <Search className="text-white" size={20} />
+      <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex justify-between items-start z-500 pointer-events-none">
+        <div className="bg-gray-50 backdrop-blur-md shadow-2xl border-l-4 border-green-500 p-3 sm:p-2 rounded-2xl flex items-center gap-2 sm:gap-3 w-full max-w-xs sm:max-w-md pointer-events-auto">
+          <div className="bg-green-500 p-2 sm:p-2 rounded-xl flex-shrink-0">
+            <Search className="text-white w-4 h-4 sm:w-5 sm:h-5" />
           </div>
           <input
             type="text"
             placeholder="Search farm location in Malawi..."
-            className="bg-transparent border-none outline-none text-normal font-semibold w-full text-gray-700 placeholder:text-slate-500 placeholder:text-sm placeholder:font-italic"
+            className="bg-transparent border-none outline-none text-sm sm:text-normal font-semibold w-full text-gray-700 placeholder:text-slate-500 placeholder:text-xs sm:placeholder:text-sm placeholder:font-italic"
           />
         </div>
 
         <div className="flex gap-2 pointer-events-auto items-center">
-          <button className="backdrop-blur-md p-3 rounded-xl bg-green-500 shadow-2xl text-normal text-gray-50  font-black transition-all">
-            <Settings2 size={24} className="text-gray" />
+          <button className="backdrop-blur-md p-2 sm:p-3 rounded-xl bg-green-500 shadow-2xl text-sm sm:text-normal text-gray-50 font-black transition-all sm:self-auto">
+            <Settings2 className="text-gray w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </div>
-
       {/* 3. FLOATING ACTION PANEL (The Intelligence) */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-500 w-full max-w-xl px-6">
-        <div className="bg-gray-300 backdrop-blur-xl p-6 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border-l-4 border-l-green-500">
+      <div className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 z-500 w-full max-w-sm sm:max-w-xl px-4 sm:px-6">
+        <div className="bg-gray-300 backdrop-blur-xl p-4 sm:p-6 rounded-4xl sm:rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border-l-4 border-l-green-500">
           {!coords ? (
-            <div className="text-center py-4">
-              <div className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Sparkles className="text-white animate-pulse" size={24} />
+            <div className="text-center py-3 sm:py-4">
+              <div className="bg-green-500 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <Sparkles className="text-white animate-pulse w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-lg font-bold text-gray-800">
+              <h3 className="text-base sm:text-lg font-bold text-gray-800">
                 Select your field
               </h3>
-              <p className="text-gray-800 font-semibold text-xs">
+              <p className="text-gray-800 font-semibold text-xs sm:text-xs">
                 Tap exactly on your land to analyze 10m² of soil health
               </p>
             </div>
           ) : analysis ? (
-            <div className="text-center py-4">
-              <div className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Sparkles className="text-white" size={24} />
+            <div className="text-center py-3 sm:py-4">
+              <div className="bg-green-500 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                <Sparkles className="text-white w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-4">
+              <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4">
                 Soil Analysis Results
               </h3>
-              <table className="w-full text-left text-gray-800 mt-4">
-                <thead>
-                  <tr>
-                    <th className="border-b pb-2 font-semibold">Metric</th>
-                    <th className="border-b pb-2 font-semibold">Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="py-1">Crop Recommendation</td>
-                    <td className="py-1">{analysis.data.crop}</td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">pH Level</td>
-                    <td className="py-1">{analysis.data.pH}</td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Nitrogen</td>
-                    <td className="py-1">{analysis.data.nutrients.Nitrogen}</td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Phosphorus</td>
-                    <td className="py-1">
-                      {analysis.data.nutrients.Phosphorus}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Potassium</td>
-                    <td className="py-1">
-                      {analysis.data.nutrients.Potassium}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Confidence</td>
-                    <td className="py-1">
-                      {analysis.data?.confidence
-                        ? (analysis.data.confidence * 100).toFixed(1) + "%"
-                        : "N/A"}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Elevation</td>
-                    <td className="py-1">
-                      {analysis.data?.elevation
-                        ? analysis.data.elevation + "m"
-                        : "N/A"}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-1">Slope</td>
-                    <td className="py-1">
-                      {analysis.data?.slope
-                        ? analysis.data.slope.toFixed(2) + "°"
-                        : "N/A"}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-gray-800 mt-4 text-xs sm:text-sm">
+                  <thead>
+                    <tr>
+                      <th className="border-b pb-2 font-semibold text-xs sm:text-sm">
+                        Metric
+                      </th>
+                      <th className="border-b pb-2 font-semibold text-xs sm:text-sm">
+                        Value
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">
+                        Crop Recommendation
+                      </td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data.crop}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">pH Level</td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data.pH}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">Nitrogen</td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data.nutrients.Nitrogen}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">Phosphorus</td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data.nutrients.Phosphorus}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">Potassium</td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data.nutrients.Potassium}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">Confidence</td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data?.confidence
+                          ? (analysis.data.confidence * 100).toFixed(1) + "%"
+                          : "N/A"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">Elevation</td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data?.elevation
+                          ? analysis.data.elevation + "m"
+                          : "N/A"}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="py-1 text-xs sm:text-sm">Slope</td>
+                      <td className="py-1 text-xs sm:text-sm">
+                        {analysis.data?.slope
+                          ? analysis.data.slope.toFixed(2) + "°"
+                          : "N/A"}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           ) : (
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center justify-center gap-1">
-                  <MapPin className="text-blue-700 animate-pulse" size={22} />
-                  <p className="text-center mt-1 text- font-black text-gray-900 tracking-widest mb-2">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+              <div className="text-center sm:text-left">
+                <div className="flex items-center justify-center sm:justify-start gap-1">
+                  <MapPin className="text-blue-700 animate-pulse w-4.5 h-4.5 sm:w-5.5 sm:h-5.5" />
+                  <p className="text-center sm:text-left mt-1 text-xs sm:text-sm font-black text-gray-900 tracking-widest mb-2">
                     Selected Location
                   </p>
                 </div>
-                <p className="text-center text-xl font-mono font-bold text-gray-800">
+                <p className="text-center sm:text-left text-sm sm:text-xl font-mono font-bold text-gray-800">
                   {coords.lat.toFixed(5)}°N, {coords.lon.toFixed(5)}°E
                 </p>
               </div>
               <button
                 onClick={handleAnalyze}
                 disabled={loading || !coords}
-                className="bg-green-500 border-l-4 border-l-blue-100 hover:bg-green-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-lg shadow-emerald-500/20 active:scale-95 active:bg-green-600"
+                className="bg-green-500 border-l-4 border-l-blue-100 hover:bg-green-700 disabled:bg-gray-400 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-2xl font-black transition-all shadow-lg shadow-emerald-500/20 active:scale-95 active:bg-green-600 text-xs sm:text-sm"
               >
                 {loading ? "ANALYZING..." : "ANALYZE SOIL"}
               </button>
