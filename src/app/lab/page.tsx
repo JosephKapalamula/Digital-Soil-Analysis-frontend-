@@ -58,6 +58,7 @@ export default function FieldLabAuth() {
                 router.push("/lab/dashboard");
               } catch (e: any) {
                 setError(e.message);
+                console.log(e.message);
               } finally {
                 setLoading(false);
               }

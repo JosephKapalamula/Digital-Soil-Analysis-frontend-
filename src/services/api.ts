@@ -1,6 +1,7 @@
 import { SoilAnalysis, SoilAnalysisResponse } from "@/types/soil";
+// || "http://127.0.0.1:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 export const soilService = {
   // Updated to use POST and send JSON body
   async analyzeSoil(
@@ -20,7 +21,8 @@ export const soilService = {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.detail || "Failed to analyze soil");
+      const cleanMessage = errorData.detail.replace(/^\d+:\s*/, '');
+      throw new Error(cleanMessage || "Failed to analyze soil");
     }
 
     return response.json();
@@ -38,7 +40,11 @@ export const soilService = {
       },
       body: JSON.stringify({ ...userData, role: "user" }),
     });
-    if (!response.ok) throw new Error("Failed to create user");
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      const cleanMessage = errorData.detail.replace(/^\d+:\s*/, '');
+      throw new Error(cleanMessage || "Failed to create user");
+    }
     return response.json();
   },
 
@@ -50,7 +56,11 @@ export const soilService = {
       },
       body: JSON.stringify(loginData),
     });
-    if (!response.ok) throw new Error("Failed to login");
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      const cleanMessage = errorData.detail.replace(/^\d+:\s*/, '');
+      throw new Error(cleanMessage || "Failed to login");
+    }
     return response.json();
   },
   async collectGroundTruth(data: {
@@ -74,7 +84,9 @@ export const soilService = {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
-      throw new Error("Failed to collect ground truth data");
+      const errorData = await response.json().catch(() => ({}));
+      const cleanMessage = errorData.detail.replace(/^\d+:\s*/, '');
+      throw new Error(cleanMessage || "Failed to collect ground truth data");
     }
     return response.json();
   },
@@ -99,7 +111,9 @@ export const soilService = {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
-      throw new Error("Failed to update ground truth data");
+      const errorData = await response.json().catch(() => ({}));
+      const cleanMessage = errorData.detail.replace(/^\d+:\s*/, '');
+      throw new Error(cleanMessage || "Failed to update ground truth data");
     }
     return response.json();
   },

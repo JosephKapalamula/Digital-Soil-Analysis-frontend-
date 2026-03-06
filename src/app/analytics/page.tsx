@@ -157,9 +157,9 @@ export default function AnalyticsPage() {
         <div className="bg-gray-200 border-l-4 border-emerald-500/50 p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl lg:rounded-[2.5rem] shadow-2xl">
           <h3 className="text-base sm:text-lg md:text-xl font-black text-white mb-3 sm:mb-4 md:mb-6 flex items-center gap-1.5 sm:gap-2">
             <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-emerald-500" />{" "}
-            <h1 className="text-emerald-500 text-xs sm:text-sm md:text-base">
+            <span className="text-emerald-500 text-xs sm:text-sm md:text-base">
               Nitrogen Distribution
-            </h1>
+            </span>
           </h3>
           <div className="h-32 sm:h-40 md:h-48 lg:h-64 xl:h-75">
             <Bar
