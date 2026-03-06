@@ -292,49 +292,45 @@ export default function FieldLabDashboard() {
   };
 
   return (
-    <div className="min-h-screen ml-1  bg-linear-to-br from-green-50 to-blue-50 mt-1">
+    <div className="min-h-screen ml-1 bg-linear-to-br from-green-50 to-blue-50 mt-1">
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {" "}
-            {/* Increased height slightly for better spacing */}
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Left: Logo and Title */}
-            <div className="flex items-center space-x-3 w-1/4">
-              {" "}
-              {/* Fixed width to help centering */}
-              <div className="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center shrink-0">
-                <Microscope className="text-white" size={24} />
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-600 rounded-lg sm:rounded-xl flex items-center justify-center shrink-0">
+                <Microscope className="text-white w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-gray-900 leading-none">
+                <h1 className="text-lg sm:text-xl font-bold text-gray-900 leading-none">
                   Field Lab
                 </h1>
-                <p className="text-xs text-gray-500">Soil Analysis Dashboard</p>
+                <p className="text-xs text-gray-500 hidden md:block">
+                  Soil Analysis Dashboard
+                </p>
               </div>
             </div>
-            {/* Center: Welcome Message */}
-            <div className="flex-1 text-center">
-              <div className="inline-block px-6 py-2 rounded-xl shadow-inner">
-                <p className="text-lg font-medium text-gray-700">
+            {/* Center: Welcome Message - Now visible on all screens */}
+            <div className="flex flex-1 text-center">
+              <div className="inline-block px-2 sm:px-3 md:px-6 py-1 sm:py-1.5 md:py-2 rounded-lg sm:rounded-xl shadow-inner">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-gray-700">
                   Welcome,{" "}
                   <span className="text-green-600 font-bold">{userName}</span>
                 </p>
               </div>
             </div>
             {/* Right: Logout Button */}
-            <div className="flex justify-end w-1/4">
-              {" "}
-              {/* Fixed width to help centering */}
+            <div className="flex justify-end">
               <button
                 onClick={() => {
                   localStorage.removeItem("token");
                   router.push("/lab");
                 }}
-                className="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 shadow-sm"
+                className="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-1 sm:space-x-2 shadow-sm"
               >
-                <LogOut size={18} />
-                <span className="hidden md:inline">Logout</span>
+                <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                <span className="text-sm md:text-base">Logout</span>
               </button>
             </div>
           </div>
@@ -343,11 +339,13 @@ export default function FieldLabDashboard() {
 
       {/* Global Success Message */}
       {successMessage && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-          <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mt-2 sm:mt-4">
+          <div className="bg-green-50 border border-green-200 text-green-800 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
             <div className="flex items-center">
-              <CheckCircle size={16} className="mr-2" />
-              <span className="text-sm font-medium">{successMessage}</span>
+              <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
+              <span className="text-xs sm:text-sm font-medium">
+                {successMessage}
+              </span>
             </div>
           </div>
         </div>
@@ -355,73 +353,85 @@ export default function FieldLabDashboard() {
 
       {/* Global Error Message */}
       {errorMessage && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-          <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mt-2 sm:mt-4">
+          <div className="bg-red-50 border border-red-200 text-red-800 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
             <div className="flex items-center">
-              <AlertCircle size={16} className="mr-2" />
-              <span className="text-sm font-medium">{errorMessage}</span>
+              <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
+              <span className="text-xs sm:text-sm font-medium">
+                {errorMessage}
+              </span>
             </div>
           </div>
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Samples</p>
-                <p className="text-2xl font-bold text-gray-900">247</p>
+                <p className="text-xs sm:text-sm text-gray-600">
+                  Total Samples
+                </p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
+                  247
+                </p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                <TestTube className="text-blue-600" size={24} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <TestTube className="text-blue-600 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Completed</p>
-                <p className="text-2xl font-bold text-green-600">189</p>
+                <p className="text-xs sm:text-sm text-gray-600">Completed</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">
+                  189
+                </p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                <CheckCircle className="text-green-600" size={24} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <CheckCircle className="text-green-600 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Processing</p>
-                <p className="text-2xl font-bold text-yellow-600">34</p>
+                <p className="text-xs sm:text-sm text-gray-600">Processing</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-600">
+                  34
+                </p>
               </div>
-              <div className="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
-                <Clock className="text-yellow-600" size={24} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <Clock className="text-yellow-600 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Avg pH Level</p>
-                <p className="text-2xl font-bold text-gray-900">6.8</p>
+                <p className="text-xs sm:text-sm text-gray-600">Avg pH Level</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
+                  6.8
+                </p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                <TrendingUp className="text-purple-600" size={24} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <TrendingUp className="text-purple-600 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
             </div>
           </div>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
-          <div className="flex space-x-8 px-6 pt-6">
-            {["overview", "samples", "analytics", "reports"].map((tab) => (
+        <div className="bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-200 mb-4 sm:mb-6">
+          <div className="flex space-x-4 sm:space-x-6 md:space-x-8 px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6">
+            {["overview", "samples"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`pb-4 px-1 border-b-2 font-medium text-sm capitalize transition-colors ${
+                className={`pb-2 sm:pb-3 md:pb-4 px-1 sm:px-2 border-b-2 font-medium text-xs sm:text-sm capitalize transition-colors ${
                   activeTab === tab
                     ? "border-green-600 text-green-600"
                     : "border-transparent text-gray-500 hover:text-gray-700"
@@ -434,42 +444,44 @@ export default function FieldLabDashboard() {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
           {/* Left Column - Recent Samples */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-              <div className="p-6 border-b border-gray-200">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-gray-900">
+          <div className="xl:col-span-2">
+            <div className="bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-200">
+              <div className="p-4 sm:p-6 border-b border-gray-200">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+                  <h2 className="text-base sm:text-lg font-semibold text-gray-900">
                     Recent Samples
                   </h2>
-                  <div className="flex items-center space-x-2">
-                    <button className="p-2 text-gray-500 hover:text-gray-700 transition-colors">
-                      <Search size={18} />
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <button className="p-1.5 sm:p-2 text-gray-500 hover:text-gray-700 transition-colors">
+                      <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
-                    <button className="p-2 text-gray-500 hover:text-gray-700 transition-colors">
-                      <Filter size={18} />
+                    <button className="p-1.5 sm:p-2 text-gray-500 hover:text-gray-700 transition-colors">
+                      <Filter className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
                     <button
                       onClick={() => setShowNewSampleForm(true)}
-                      className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
                     >
-                      <Plus size={16} />
-                      <span>Collect Soil Data</span>
+                      <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span className="text-xs sm:text-sm">
+                        Collect Soil Data
+                      </span>
                     </button>
                   </div>
                 </div>
               </div>
-              <div className="p-6">
-                <div className="space-y-4">
+              <div className="p-4 sm:p-6">
+                <div className="space-y-3 sm:space-y-4">
                   {recentSamples.map((sample) => (
                     <div
                       key={sample.id}
-                      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                      className="border border-gray-200 rounded-lg p-3 sm:p-4 hover:shadow-md transition-shadow"
                     >
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center space-x-3">
-                          <span className="font-semibold text-gray-900">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0 mb-2 sm:mb-3">
+                        <div className="flex items-center space-x-2 sm:space-x-3">
+                          <span className="font-semibold text-sm sm:text-base text-gray-900">
                             {sample.id}
                           </span>
                           <div
@@ -479,39 +491,41 @@ export default function FieldLabDashboard() {
                             <span className="capitalize">{sample.status}</span>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm text-gray-500">
+                        <div className="flex items-center justify-between sm:justify-end space-x-2">
+                          <span className="text-xs sm:text-sm text-gray-500">
                             {sample.date}
                           </span>
-                          <button
-                            onClick={() => handleEditSample(sample)}
-                            className="p-1 text-green-600 hover:bg-green-50 rounded transition-colors"
-                          >
-                            <Edit size={16} />
-                          </button>
-                          <button
-                            onClick={() => handleDeleteSample(sample)}
-                            className="p-1 text-red-600 hover:bg-red-50 rounded transition-colors"
-                          >
-                            <Trash2 size={16} />
-                          </button>
+                          <div className="flex items-center space-x-1">
+                            <button
+                              onClick={() => handleEditSample(sample)}
+                              className="p-1 text-green-600 hover:bg-green-50 rounded transition-colors"
+                            >
+                              <Edit className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteSample(sample)}
+                              className="p-1 text-red-600 hover:bg-red-50 rounded transition-colors"
+                            >
+                              <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            </button>
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2 text-sm text-gray-600 mb-3">
-                        <MapPin size={14} />
+                      <div className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3">
+                        <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                         <span>{sample.location}</span>
                       </div>
                       {sample.status === "completed" && (
-                        <div className="grid grid-cols-4 gap-4 text-sm">
-                          <div className="flex items-center space-x-2">
-                            <TestTube size={14} className="text-blue-500" />
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-xs sm:text-sm">
+                          <div className="flex items-center space-x-1 sm:space-x-2">
+                            <TestTube className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-500" />
                             <div>
                               <p className="text-gray-500">pH</p>
                               <p className="font-semibold">{sample.ph}</p>
                             </div>
                           </div>
-                          <div className="flex items-center space-x-2">
-                            <Leaf size={14} className="text-green-500" />
+                          <div className="flex items-center space-x-1 sm:space-x-2">
+                            <Leaf className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-500" />
                             <div>
                               <p className="text-gray-500">N</p>
                               <p className="font-semibold">
@@ -519,8 +533,8 @@ export default function FieldLabDashboard() {
                               </p>
                             </div>
                           </div>
-                          <div className="flex items-center space-x-2">
-                            <Droplets size={14} className="text-yellow-500" />
+                          <div className="flex items-center space-x-1 sm:space-x-2">
+                            <Droplets className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-yellow-500" />
                             <div>
                               <p className="text-gray-500">P</p>
                               <p className="font-semibold">
@@ -528,8 +542,8 @@ export default function FieldLabDashboard() {
                               </p>
                             </div>
                           </div>
-                          <div className="flex items-center space-x-2">
-                            <Thermometer size={14} className="text-red-500" />
+                          <div className="flex items-center space-x-1 sm:space-x-2">
+                            <Thermometer className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-red-500" />
                             <div>
                               <p className="text-gray-500">K</p>
                               <p className="font-semibold">
@@ -547,60 +561,74 @@ export default function FieldLabDashboard() {
           </div>
 
           {/* Right Column - Quick Actions */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
                 Quick Actions
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <button
                   onClick={handleUploadData}
-                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors"
+                  className="w-full flex items-center space-x-2 sm:space-x-3 p-2.5 sm:p-3 text-left hover:bg-gray-50 rounded-lg transition-colors"
                 >
-                  <FileUp size={18} className="text-blue-600" />
-                  <span className="text-gray-700">Upload Data</span>
+                  <FileUp className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+                  <span className="text-sm sm:text-base text-gray-700">
+                    Upload Data
+                  </span>
                 </button>
                 <button
                   onClick={handleDownloadData}
-                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors"
+                  className="w-full flex items-center space-x-2 sm:space-x-3 p-2.5 sm:p-3 text-left hover:bg-gray-50 rounded-lg transition-colors"
                 >
-                  <FileDown size={18} className="text-green-600" />
-                  <span className="text-gray-700">Download Data</span>
+                  <FileDown className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
+                  <span className="text-sm sm:text-base text-gray-700">
+                    Download Data
+                  </span>
                 </button>
-                <button className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
-                  <RefreshCw size={18} className="text-purple-600" />
-                  <span className="text-gray-700">Sync Database</span>
+                <button className="w-full flex items-center space-x-2 sm:space-x-3 p-2.5 sm:p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
+                  <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" />
+                  <span className="text-sm sm:text-base text-gray-700">
+                    Sync Database
+                  </span>
                 </button>
-                <button className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
-                  <Database size={18} className="text-orange-600" />
-                  <span className="text-gray-700">Backup Data</span>
+                <button className="w-full flex items-center space-x-2 sm:space-x-3 p-2.5 sm:p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
+                  <Database className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
+                  <span className="text-sm sm:text-base text-gray-700">
+                    Backup Data
+                  </span>
                 </button>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">
                 System Status
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Lab Equipment</span>
-                  <span className="flex items-center space-x-1 text-sm text-green-600">
-                    <CheckCircle size={14} />
+                  <span className="text-xs sm:text-sm text-gray-600">
+                    Lab Equipment
+                  </span>
+                  <span className="flex items-center space-x-1 text-xs sm:text-sm text-green-600">
+                    <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     <span>Online</span>
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Database</span>
-                  <span className="flex items-center space-x-1 text-sm text-green-600">
-                    <CheckCircle size={14} />
+                  <span className="text-xs sm:text-sm text-gray-600">
+                    Database
+                  </span>
+                  <span className="flex items-center space-x-1 text-xs sm:text-sm text-green-600">
+                    <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     <span>Connected</span>
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">API Status</span>
-                  <span className="flex items-center space-x-1 text-sm text-green-600">
-                    <CheckCircle size={14} />
+                  <span className="text-xs sm:text-sm text-gray-600">
+                    API Status
+                  </span>
+                  <span className="flex items-center space-x-1 text-xs sm:text-sm text-green-600">
+                    <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     <span>Operational</span>
                   </span>
                 </div>
@@ -612,51 +640,52 @@ export default function FieldLabDashboard() {
 
       {/* New Sample Modal */}
       {showNewSampleForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 w-full max-w-sm sm:max-w-md max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                 Collect Soil Data
               </h3>
               <button
                 onClick={() => setShowNewSampleForm(false)}
                 className="p-1 hover:bg-gray-100 rounded"
               >
-                <X size={20} />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
 
             {/* Success Message */}
             {successMessage && (
-              <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+              <div className="bg-green-50 border border-green-200 text-green-800 px-3 sm:px-4 py-2 sm:py-3 rounded-lg mb-3 sm:mb-4">
                 <div className="flex items-center">
-                  <CheckCircle size={16} className="mr-2" />
-                  <span className="text-sm font-medium">{successMessage}</span>
+                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
+                  <span className="text-xs sm:text-sm font-medium">
+                    {successMessage}
+                  </span>
                 </div>
               </div>
             )}
 
             {/* Error Message */}
             {errorMessage && (
-              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+              <div className="bg-red-50 border border-red-200 text-red-800 px-3 sm:px-4 py-2 sm:py-3 rounded-lg mb-3 sm:mb-4">
                 <div className="flex items-center">
-                  <AlertCircle size={16} className="mr-2" />
-                  <span className="text-sm font-medium">{errorMessage}</span>
+                  <AlertCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2" />
+                  <span className="text-xs sm:text-sm font-medium">
+                    {errorMessage}
+                  </span>
                 </div>
               </div>
             )}
 
             {/* Success State Display */}
             {showSuccessState && (
-              <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-6 rounded-lg text-center">
-                <CheckCircle
-                  size={48}
-                  className="mx-auto mb-3 text-green-600"
-                />
-                <h4 className="text-lg font-semibold text-green-900 mb-2">
+              <div className="bg-green-50 border border-green-200 text-green-800 px-3 sm:px-4 py-4 sm:py-6 rounded-lg text-center">
+                <CheckCircle className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 text-green-600" />
+                <h4 className="text-base sm:text-lg font-semibold text-green-900 mb-2">
                   Soil Data Collected Successfully!
                 </h4>
-                <p className="text-sm text-green-700">
+                <p className="text-xs sm:text-sm text-green-700">
                   Your soil sample data has been successfully submitted to the
                   system.
                 </p>
@@ -665,10 +694,10 @@ export default function FieldLabDashboard() {
 
             {/* Form - Hide during success state */}
             {!showSuccessState && (
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    <MapPin size={16} className="inline mr-2 text-blue-600" />
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-blue-600" />
                     Location
                   </label>
                   <input
@@ -679,15 +708,15 @@ export default function FieldLabDashboard() {
                       setErrorMessage(""); // Clear error when user types
                     }}
                     placeholder="e.g., Lilongwe District, Field A"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                     required
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      <Map size={16} className="inline mr-2 text-blue-600" />
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <Map className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-blue-600" />
                       GPS Latitude
                     </label>
                     <input
@@ -698,12 +727,12 @@ export default function FieldLabDashboard() {
                         setNewSample({ ...newSample, gpsLat: e.target.value })
                       }
                       placeholder="-13.2543"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md  focus:border-b-4 outline-none transition-all"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      <Map size={16} className="inline mr-2 text-blue-600" />
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <Map className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-blue-600" />
                       GPS Longitude
                     </label>
                     <input
@@ -714,17 +743,14 @@ export default function FieldLabDashboard() {
                         setNewSample({ ...newSample, gpsLng: e.target.value })
                       }
                       placeholder="34.3015"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    <TestTube
-                      size={16}
-                      className="inline mr-2 text-purple-600"
-                    />
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <TestTube className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-purple-600" />
                     pH Level
                   </label>
                   <input
@@ -737,14 +763,14 @@ export default function FieldLabDashboard() {
                       setNewSample({ ...newSample, ph: e.target.value })
                     }
                     placeholder="6.5"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                   />
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      <Leaf size={16} className="inline mr-2 text-green-600" />
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-green-600" />
                       Nitrogen (mg/kg)
                     </label>
                     <input
@@ -754,15 +780,12 @@ export default function FieldLabDashboard() {
                         setNewSample({ ...newSample, nitrogen: e.target.value })
                       }
                       placeholder="45"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      <Droplets
-                        size={16}
-                        className="inline mr-2 text-cyan-600"
-                      />
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <Droplets className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-cyan-600" />
                       Phosphorus (mg/kg)
                     </label>
                     <input
@@ -775,15 +798,12 @@ export default function FieldLabDashboard() {
                         })
                       }
                       placeholder="22"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      <Thermometer
-                        size={16}
-                        className="inline mr-2 text-orange-600"
-                      />
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                      <Thermometer className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-orange-600" />
                       Potassium (mg/kg)
                     </label>
                     <input
@@ -796,14 +816,14 @@ export default function FieldLabDashboard() {
                         })
                       }
                       placeholder="38"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    <Wheat size={16} className="inline mr-2 text-yellow-600" />
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
+                    <Wheat className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline mr-2 text-yellow-600" />
                     Recommended Crop
                   </label>
                   <select
@@ -814,7 +834,7 @@ export default function FieldLabDashboard() {
                         recommended_crop: e.target.value,
                       })
                     }
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md focus:border-b-4 outline-none transition-all text-sm sm:text-base"
                     required
                   >
                     <option value="">Select a crop</option>
@@ -832,26 +852,26 @@ export default function FieldLabDashboard() {
                   </select>
                 </div>
 
-                <div className="flex justify-end space-x-3 pt-4 border-t">
+                <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-3 sm:pt-4 border-t">
                   <button
                     onClick={() => setShowNewSampleForm(false)}
-                    className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="px-3 sm:px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleCreateSample}
                     disabled={isSubmitting}
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader size={16} className="animate-spin" />
+                        <Loader className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />
                         <span>Collecting...</span>
                       </>
                     ) : (
                       <>
-                        <Save size={16} />
+                        <Save className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         <span>Add Soil Data</span>
                       </>
                     )}
@@ -865,33 +885,33 @@ export default function FieldLabDashboard() {
 
       {/* Edit Modal */}
       {showEditModal && selectedSample && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 w-full max-w-sm sm:max-w-md">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                 Edit Sample
               </h3>
               <button
                 onClick={() => setShowEditModal(false)}
                 className="p-1 hover:bg-gray-100 rounded"
               >
-                <X size={20} />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                   Sample ID
                 </label>
                 <input
                   type="text"
                   value={selectedSample.id}
                   disabled
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-sm sm:text-base"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                   Location
                 </label>
                 <input
@@ -903,11 +923,11 @@ export default function FieldLabDashboard() {
                       location: e.target.value,
                     })
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                   Status
                 </label>
                 <select
@@ -921,7 +941,7 @@ export default function FieldLabDashboard() {
                         | "completed",
                     })
                   }
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base"
                 >
                   <option value="pending">Pending</option>
                   <option value="processing">Processing</option>
@@ -930,9 +950,9 @@ export default function FieldLabDashboard() {
               </div>
               {selectedSample.status === "completed" && (
                 <>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                         pH Level
                       </label>
                       <input
@@ -945,11 +965,11 @@ export default function FieldLabDashboard() {
                             ph: parseFloat(e.target.value),
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                         Nitrogen (mg/kg)
                       </label>
                       <input
@@ -961,13 +981,13 @@ export default function FieldLabDashboard() {
                             nitrogen: parseInt(e.target.value),
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base"
                       />
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                         Phosphorus (mg/kg)
                       </label>
                       <input
@@ -979,11 +999,11 @@ export default function FieldLabDashboard() {
                             phosphorus: parseInt(e.target.value),
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                         Potassium (mg/kg)
                       </label>
                       <input
@@ -995,24 +1015,24 @@ export default function FieldLabDashboard() {
                             potassium: parseInt(e.target.value),
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base"
                       />
                     </div>
                   </div>
                 </>
               )}
-              <div className="flex justify-end space-x-3 pt-4">
+              <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-3 sm:pt-4 border-t">
                 <button
                   onClick={() => setShowEditModal(false)}
-                  className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  className="px-3 sm:px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 text-sm sm:text-base"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={() => handleUpdateSample(selectedSample)}
-                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center space-x-2"
+                  className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center space-x-2 text-sm sm:text-base"
                 >
-                  <Save size={16} />
+                  <Save className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Save Changes</span>
                 </button>
               </div>
@@ -1023,29 +1043,29 @@ export default function FieldLabDashboard() {
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && selectedSample && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-sm">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 w-full max-w-xs sm:max-w-sm">
             <div className="text-center">
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trash2 className="text-red-600" size={24} />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Trash2 className="text-red-600 w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
                 Delete Sample
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6">
                 Are you sure you want to delete sample {selectedSample.id}? This
                 action cannot be undone.
               </p>
-              <div className="flex justify-center space-x-3">
+              <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-3">
                 <button
                   onClick={() => setShowDeleteModal(false)}
-                  className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  className="px-3 sm:px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 text-sm sm:text-base"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={confirmDelete}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                  className="px-3 sm:px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm sm:text-base"
                 >
                   Delete
                 </button>
@@ -1057,47 +1077,43 @@ export default function FieldLabDashboard() {
 
       {/* Upload Modal */}
       {showUploadModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 w-full max-w-sm sm:max-w-md">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                 Upload Data
               </h3>
               <button
                 onClick={() => setShowUploadModal(false)}
                 className="p-1 hover:bg-gray-100 rounded"
               >
-                <X size={20} />
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
-            <div className="space-y-4">
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                <FileUp className="mx-auto text-gray-400 mb-4" size={48} />
-                <p className="text-gray-600 mb-2">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 sm:p-6 md:p-8 text-center">
+                <FileUp className="mx-auto text-gray-400 mb-3 sm:mb-4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+                <p className="text-gray-600 text-sm sm:text-base mb-2">
                   Drag and drop your files here
                 </p>
-                <p className="text-sm text-gray-500 mb-4">or</p>
-                <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
+                  or
+                </p>
+                <button className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm sm:text-base">
                   Browse Files
                 </button>
-                <p className="text-xs text-gray-500 mt-4">
+                <p className="text-xs text-gray-500 mt-3 sm:mt-4">
                   Supported formats: JSON, CSV, Excel
                 </p>
               </div>
-              <div className="flex justify-end space-x-3 pt-4">
+              <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-3 sm:pt-4 border-t">
                 <button
                   onClick={() => setShowUploadModal(false)}
-                  className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  className="px-3 sm:px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 text-sm sm:text-base"
                 >
                   Cancel
                 </button>
-                <button
-                  onClick={() => {
-                    // Handle upload logic here
-                    setShowUploadModal(false);
-                  }}
-                  className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
-                >
+                <button className="px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm sm:text-base">
                   Upload
                 </button>
               </div>

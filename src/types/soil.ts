@@ -1,4 +1,5 @@
 export interface SoilNutrients {
+  pH: number;
   Nitrogen: number;
   Phosphorus: number;
   Potassium: number;
@@ -15,10 +16,9 @@ export interface SoilAnalysisResponse {
 export interface SoilAnalysis {
   confidence: number;
   crop: string;
-  nutrients: SoilNutrients;
+  nutrients: SoilNutrients[];
   pH: number;
   raw_features?: Record<string, number>;
-  elevation: number;
-  slope: number;
   source: DataSource;
+  report?: string;
 }
