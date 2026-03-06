@@ -69,7 +69,7 @@ export default function AnalysisResult({
               Nitrogen
             </span>
             <span className="text-2xl font-bold text-slate-700">
-              {data.nutrients.Nitrogen}{" "}
+              {data.nutrients[0]?.Nitrogen}{" "}
               <small className="text-xs font-normal opacity-50">mg/kg</small>
             </span>
           </div>
