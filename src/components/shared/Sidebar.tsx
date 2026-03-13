@@ -82,7 +82,7 @@ export default function Sidebar() {
               <Leaf className="text-white" size={24} />
             </div>
             <span className="font-black text-xl tracking-tighter text-gray-700">
-              TERRA<span className="text-emerald-500">MALAWI</span>
+              AGRI<span className="text-emerald-500"> TERRA 265</span>
             </span>
           </div>
 
